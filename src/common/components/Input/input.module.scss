@@ -1,0 +1,28 @@
+@import "../../styles/sass/mixns";
+@import "../../styles/sass/variables";
+
+.inputContainer {
+  display: flex;
+  flex-direction: column;
+  span {
+    @include text(400, 14px, 24px);
+    color: $fontColor
+  }
+  input {
+    background-color: transparent;
+    border: none;
+    border-bottom: 1px solid #DEDBDC;
+    @include text(400, 16px, 24px);
+    color: #1A1718;
+  }
+  textarea {
+    background-color: transparent;
+    border: 1px solid #DEDBDC;
+    @include text(400, 16px, 24px);
+    color: #1A1718;
+    border-radius: 2px;
+    width: 100%;
+    height: 120px;
+    resize: none
+  }
+}

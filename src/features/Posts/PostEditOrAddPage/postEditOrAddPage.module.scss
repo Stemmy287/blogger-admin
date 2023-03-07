@@ -1,0 +1,41 @@
+@import "../../../common/styles/sass/variables";
+@import "../../../common/styles/sass/mixns";
+
+.postEditOrAddPageContainer {
+  width: 526px;
+  background-color: $secondBGColor;
+  .postEditOrAddPageContent {
+    display: flex;
+    flex-direction: column;
+    row-gap: 30px;
+    padding: 25px;
+    .image {
+      width: 180px;
+      height: 108px;
+      background-color: $secondBGColor;
+    }
+    .button {
+      display: flex;
+      justify-content: flex-end;
+      width: 100%;
+      margin-bottom: 17px;
+    }
+    .selector {
+      display: flex;
+      flex-direction: column;
+      span {
+        @include text(400, 14px, 24px);
+        color: $fontColor
+      }
+      select {
+        height: 36px;
+        border: solid 1px #DEDBDC;
+        border-radius: 2px;
+        cursor: pointer;
+        @include text(400, 16px, 24px);
+        color: $fontColor;
+        padding-left: 7px;
+      }
+    }
+  }
+}
