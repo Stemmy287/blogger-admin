@@ -20,7 +20,7 @@ export const Title: FC<TitlePropsType> = ({
             </h2>
             {isDesc &&
                 <div className={s.descBlock}>
-                    <img src={arrow}/>
+                    <img src={arrow} alt={'arrow'}/>
                     <span className={s.desc}>{desc}</span>
                 </div>
             }

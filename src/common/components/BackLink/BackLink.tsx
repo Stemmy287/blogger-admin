@@ -14,7 +14,7 @@ export const BackLink: FC<BackLinkPropsType> = ({
                                                 }) => {
     return (
         <NavLink to={link} className={s.backLink}>
-            <img src={arrow}/>
+            <img src={arrow} alt={'arrow'}/>
             <span className={s.desc}>Back to {where}</span>
         </NavLink>
     );

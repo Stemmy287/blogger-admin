@@ -2,7 +2,8 @@ import React, {FC} from 'react';
 import s from 'features/Blogs/Blog/blog.module.scss'
 import {NavLink, useNavigate} from "react-router-dom";
 import {BurgerMenu} from "common/components/BurgerMenu/BurgerMenu";
-import {PATH} from "common/constants/constants";
+import {PATH} from "common/constants/path";
+import defaultBlogImage from 'common/image/blog2.png'
 
 type BlogsPropsType = {
     blogId: string
@@ -35,11 +36,11 @@ export const Blog: FC<BlogsPropsType> = ({
     return (
         <div className={s.blogContainer}>
             <div className={s.photo}>
-                <img src=''/>
+                <img src={defaultBlogImage} alt={'blogImage'}/>
             </div>
           <div className={s.contentAndBurgerMenu}>
             <div className={s.content}>
-              <NavLink to={`/blogPage/${blogId}`} className={s.navBlog}>
+              <NavLink to={`/BlogPage/${blogId}`} className={s.navBlog}>
                 <h3 className={s.title}>{title}</h3>
               </NavLink>
               <span className={s.website}><b>Website:</b><a href="">{webSiteUrl}</a></span>

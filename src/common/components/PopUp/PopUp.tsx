@@ -1,4 +1,4 @@
-import React, {FC, KeyboardEvent, useRef} from 'react';
+import React, {FC} from 'react';
 import s from 'common/components/PopUp/PopUp.module.scss'
 
 type PopUp = {

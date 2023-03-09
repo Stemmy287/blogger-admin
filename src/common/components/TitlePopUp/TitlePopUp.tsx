@@ -14,7 +14,7 @@ export const TitlePopUp: FC<TitlePopUpType> = ({
   return (
     <div className={s.header}>
       <h4>{title}</h4>
-      <img src={close} onClick={onCloseHandler}/>
+      <img src={close} alt={'close'} onClick={onCloseHandler}/>
     </div>
   );
 };

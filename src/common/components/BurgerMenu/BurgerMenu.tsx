@@ -31,14 +31,14 @@ export const BurgerMenu: FC<BurgerMenuType> = ({
 
     return (
         <div id="popUp" className={s.burgerMenuContainer}>
-            <img src={burgerMenu} className={s.burger} onClick={onClickBurgerHandler}/>
+            <img src={burgerMenu} alt={'burger menu'} className={s.burger} onClick={onClickBurgerHandler}/>
             {isMenu && <div className={s.buttons} onBlur={onBlurButtonsHandler}>
                 <button className={s.button} onClick={onClickDeleteHandler}>
-                    <img src={deleteIcon}/>
+                    <img src={deleteIcon} alt={'delete icon'}/>
                     <span>Delete</span>
                 </button>
                 <button className={s.button} onClick={onClickEditHandler}>
-                    <img src={editIcon}/>
+                    <img src={editIcon} alt={'edit icon'}/>
                     <span>Edit</span>
                 </button>
             </div>}

@@ -7,7 +7,7 @@ import {useNavigate} from "react-router-dom";
 import {PopUp} from "common/components/PopUp/PopUp";
 import {Notification} from "common/components/Notification/Notification";
 import {deleteBlogTC} from "features/Blogs/blogsReducer";
-import {PATH} from "common/constants/constants";
+import {PATH} from "common/constants/path";
 import {useAppDispatch} from "hooks/useAppDispatch";
 import {useAppSelector} from "hooks/useAppSelector";
 

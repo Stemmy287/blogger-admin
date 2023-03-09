@@ -5,11 +5,10 @@ import {Posts} from "features/Posts/Posts";
 import {BlogPage} from "features/Blogs/BlogPage/BlogPage";
 import {PostPage} from "features/Posts/PostPage/PostPage";
 import {BlogEditOrAddPage} from "features/Blogs/BlogEditOrAddPage/BlogEditOrAddPage";
-import {PATH} from "common/constants/constants";
+import {PATH} from "common/constants/path";
 
 export const Pages = () => {
   return (
-    <div>
       <Routes>
         <Route path={PATH.MAIN} element={<Blogs/>}/>
         <Route path={PATH.BLOGS} element={<Blogs/>}/>
@@ -30,7 +29,6 @@ export const Pages = () => {
           isEdit={true}
         />}/>
       </Routes>
-    </div>
   );
 };
 

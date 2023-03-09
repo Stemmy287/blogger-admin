@@ -7,7 +7,7 @@ import {useParams} from "react-router-dom";
 import {fetchBlogTC} from "features/Blogs/blogsReducer";
 import {useAppDispatch} from "hooks/useAppDispatch";
 import {useAppSelector} from "hooks/useAppSelector";
-
+import defaultBlogBanner from 'common/image/blog-banner.jpg'
 
 export const BlogPage = () => {
 
@@ -24,7 +24,7 @@ export const BlogPage = () => {
         <div className={s.blogPageContainer}>
             <Title title={'Blogs'} isDesc={true} desc={blog.name}/>
             <BackLink link={'/Blogs'} where={'Blogs'}/>
-            <img src="" className={s.banner}/>
+            <img src={defaultBlogBanner} alt={'blog banner'} className={s.banner}/>
             <Blog
                 blogId={blog.id}
                 title={blog.name}

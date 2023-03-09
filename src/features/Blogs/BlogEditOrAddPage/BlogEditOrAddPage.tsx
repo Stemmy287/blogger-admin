@@ -8,6 +8,7 @@ import {useLocation, useNavigate} from "react-router-dom";
 import {useFormik} from "formik";
 import {addBlogTC, editBlogTC} from "features/Blogs/blogsReducer";
 import {useAppDispatch} from "hooks/useAppDispatch";
+import defaultBlogBanner from 'common/image/blog-banner.jpg'
 
 type BlogEditOrAddPagePropsType = {
     title: string
@@ -50,7 +51,7 @@ export const BlogEditOrAddPage: FC<BlogEditOrAddPagePropsType> = ({
         <div>
             <Title title={title} isDesc={true} desc={desk}/>
             <BackLink link={link} where={'Blogs'}/>
-            <img src="" className={s.banner}/>
+            <img src={defaultBlogBanner} alt={'blog banner'} className={s.banner}/>
             <form onSubmit={formik.handleSubmit}>
                 <div className={s.form}>
                     <Input

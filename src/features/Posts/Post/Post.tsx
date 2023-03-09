@@ -2,6 +2,8 @@ import React, {FC} from 'react';
 import s from 'features/Posts/Post/post.module.scss'
 import {NavLink} from "react-router-dom";
 import {BurgerMenu} from "common/components/BurgerMenu/BurgerMenu";
+import defaultPostImage from 'common/image/Best-times-to-post-2022_BTTP-Social-Media.jpg'
+import defaultBlogImage from 'common/image/blog2.png'
 
 type PostPropsType = {
   postId: string
@@ -38,12 +40,12 @@ export const Post: FC<PostPropsType> = ({
   return (
     <div className={s.postContainer}>
       <div className={s.banner}>
-        <img src=""/>
+        <img src={defaultPostImage} alt="post image"/>
       </div>
       <div className={s.burgerAndMenu}>
         <div className={s.content}>
           <div className={s.img}>
-            <img src="" alt=""/>
+            <img src={defaultBlogImage} alt=""/>
           </div>
           <div className={s.text}>
             <NavLink to={`/postPage/${postId}`} className={s.navPost}>

@@ -8,7 +8,7 @@ import {addPostTC, editPostTC} from "features/Posts/postsReducer";
 import {BlogType} from "features/Blogs/blogsApi";
 import {useAppDispatch} from "hooks/useAppDispatch";
 import {useAppSelector} from "hooks/useAppSelector";
-
+import defaultPostImage from 'common/image/Best-times-to-post-2022_BTTP-Social-Media.jpg'
 
 type PostEditOrAddPageType = {
   title: string
@@ -58,7 +58,7 @@ export const PostEditOrAddPage: FC<PostEditOrAddPageType> = ({
       <TitlePopUp title={title} onCloseHandler={onCloseHandler}/>
       <form onSubmit={formik.handleSubmit}>
         <div className={s.postEditOrAddPageContent}>
-          <img className={s.image} src="" alt=""/>
+          <img className={s.image} src={defaultPostImage} alt="post image"/>
           <Input title={'PostName'} component={'input'} {...formik.getFieldProps('title')}/>
           {isAdd &&
               <div className={s.selector}>
