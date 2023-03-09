@@ -9,6 +9,7 @@ import {BlogType} from "features/Blogs/blogsApi";
 import {useAppDispatch} from "hooks/useAppDispatch";
 import {useAppSelector} from "hooks/useAppSelector";
 import defaultPostImage from 'common/image/Best-times-to-post-2022_BTTP-Social-Media.jpg'
+import {postsSelector} from "features/Posts/postsSelectors";
 
 type PostEditOrAddPageType = {
   title: string
@@ -28,7 +29,7 @@ export const PostEditOrAddPage: FC<PostEditOrAddPageType> = ({
 
   const dispatch = useAppDispatch()
   const [blogId, setBlogId] = useState('')
-  const posts = useAppSelector(state => state.posts.posts)
+  const posts = useAppSelector(postsSelector)
   const post = posts.find(el => el.id === postId)
 
   const formik = useFormik({

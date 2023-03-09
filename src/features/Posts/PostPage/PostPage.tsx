@@ -6,12 +6,13 @@ import {useParams} from "react-router-dom";
 import {fetchPostTC} from "features/Posts/postsReducer";
 import {useAppDispatch} from "hooks/useAppDispatch";
 import {useAppSelector} from "hooks/useAppSelector";
+import {postSelector} from "features/Posts/postsSelectors";
 
 
 export const PostPage = () => {
 
     const {postId} = useParams()
-    const post = useAppSelector(state => state.posts.post)
+    const post = useAppSelector(postSelector)
     const dispatch = useAppDispatch()
 
     useEffect(() => {

@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {Title} from "common/components/Title/Title";
 import {Blog} from "features/Blogs/Blog/Blog";
 import {Button} from "common/components/Button/Button";
@@ -6,14 +6,15 @@ import s from 'features/Blogs/blogs.module.scss'
 import {useNavigate} from "react-router-dom";
 import {PopUp} from "common/components/PopUp/PopUp";
 import {Notification} from "common/components/Notification/Notification";
-import {deleteBlogTC} from "features/Blogs/blogsReducer";
+import {deleteBlogTC, fetchBlogsTC} from "features/Blogs/blogsReducer";
 import {PATH} from "common/constants/path";
 import {useAppDispatch} from "hooks/useAppDispatch";
 import {useAppSelector} from "hooks/useAppSelector";
+import {blogsSelector} from "features/Blogs/blogsSelectors";
 
 export const Blogs = () => {
 
-    const blogs = useAppSelector(state => state.blogs.blogs)
+    const blogs = useAppSelector(blogsSelector)
     const navigate = useNavigate()
     const dispatch = useAppDispatch()
     const navigateHandler = () => {
@@ -25,6 +26,10 @@ export const Blogs = () => {
     const deleteBlogHandler = () => {
         dispatch(deleteBlogTC({blogId}))
     }
+
+  useEffect(() => {
+    dispatch(fetchBlogsTC())
+  }, [])
 
     return (
         <div>

@@ -1,19 +1,21 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import s from 'features/Posts/posts.module.scss'
 import {Title} from "common/components/Title/Title";
 import {Post} from "features/Posts/Post/Post";
-import {deletePostTC} from "features/Posts/postsReducer";
+import {deletePostTC, fetchPostsTC} from "features/Posts/postsReducer";
 import {Button} from "common/components/Button/Button";
 import {Notification} from "common/components/Notification/Notification";
 import {PopUp} from "common/components/PopUp/PopUp";
 import {PostEditOrAddPage} from "features/Posts/PostEditOrAddPage/PostEditOrAddPage";
 import {useAppDispatch} from "hooks/useAppDispatch";
 import {useAppSelector} from "hooks/useAppSelector";
+import {postsSelector} from "features/Posts/postsSelectors";
+import {blogsSelector} from "features/Blogs/blogsSelectors";
 
 export const Posts = () => {
 
-  const posts = useAppSelector(state => state.posts.posts)
-  const blogs = useAppSelector(state => state.blogs.blogs)
+  const posts = useAppSelector(postsSelector)
+  const blogs = useAppSelector(blogsSelector)
   const dispatch = useAppDispatch()
 
   const [isDeletePopUpActive, setIsDeletePopUpActive] = useState(false)
@@ -28,6 +30,10 @@ export const Posts = () => {
   const addPostHandler = () => {
     setIsAddPopUpActive(true)
   }
+
+  useEffect(() => {
+    dispatch(fetchPostsTC())
+  }, [])
 
   return (
     <div>
