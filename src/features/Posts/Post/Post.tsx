@@ -4,6 +4,7 @@ import {NavLink} from "react-router-dom";
 import {BurgerMenu} from "common/components/BurgerMenu/BurgerMenu";
 import defaultPostImage from 'common/image/Best-times-to-post-2022_BTTP-Social-Media.jpg'
 import defaultBlogImage from 'common/image/blog2.png'
+import {dateConvertor} from "common/utils/dateConvertor";
 
 type PostPropsType = {
   postId: string
@@ -25,7 +26,7 @@ export const Post: FC<PostPropsType> = ({
                                           setPostId
                                         }) => {
 
-  const time = date.slice(11).slice(0, 8)
+  const dateParsed = dateConvertor(date)
 
   const onDeleteClickHandler = () => {
     setDeletePopUp && setDeletePopUp(true)
@@ -52,7 +53,7 @@ export const Post: FC<PostPropsType> = ({
               <h3 className={s.title}>{title}</h3>
             </NavLink>
             <span className={s.description}>{blogName}</span>
-            <span className={s.date}>{time}</span>
+            <span className={s.date}>{dateParsed}</span>
           </div>
         </div>
         <BurgerMenu onEditClick={onEditClickHandler} onDeleteClick={onDeleteClickHandler}/>
