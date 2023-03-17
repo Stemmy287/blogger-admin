@@ -48,7 +48,7 @@ export const Blogs = () => {
   }
 
   return (
-    <div>
+    <>
       <Title title="Blogs" isDesc={false}/>
       <div className={s.button}>
         <Button title={'Add Blog'} callback={navigateHandler}/>
@@ -70,7 +70,7 @@ export const Blogs = () => {
                       onClose={setIsDeletePopUpActive}
         />
       </PopUp>
-    </div>
+    </>
   );
 };
 

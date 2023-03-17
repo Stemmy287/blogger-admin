@@ -50,7 +50,7 @@ export const Posts = () => {
   }
 
   return (
-    <div>
+    <>
       <Title title={'Posts'} isDesc={false}/>
       <div className={s.button}>
         <Button title={'Add Post'} callback={addPostHandler}/>
@@ -81,7 +81,7 @@ export const Posts = () => {
       <PopUp isActive={isEditPopUpActive} setIsActive={setIsEditPopUpActive}>
         <PostEditOrAddPage postId={postId} onClose={setIsEditPopUpActive} title={'Edit Post'}/>
       </PopUp>
-    </div>
+    </>
   );
 };
 
