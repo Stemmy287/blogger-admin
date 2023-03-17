@@ -20,7 +20,6 @@ export const apiBlogs = {
   },
   deleteBlog(blogId: string) {
     return instance.delete(`api/blogs/${blogId}`, {headers})
-      .then(res => res.data)
   }
 }
 

@@ -6,6 +6,7 @@ import {BlogPage} from "features/Blogs/BlogPage/BlogPage";
 import {PostPage} from "features/Posts/PostPage/PostPage";
 import {BlogEditOrAddPage} from "features/Blogs/BlogEditOrAddPage/BlogEditOrAddPage";
 import {PATH} from "common/constants/path";
+import {Users} from "features/Users/Users";
 
 export const Pages = () => {
   return (
@@ -13,6 +14,7 @@ export const Pages = () => {
         <Route path={PATH.MAIN} element={<Blogs/>}/>
         <Route path={PATH.BLOGS} element={<Blogs/>}/>
         <Route path={PATH.POSTS} element={<Posts/>}/>
+        <Route path={PATH.USERS} element={<Users/>}/>
         <Route path={PATH.BLOG_PAGE} element={<BlogPage/>}/>
         <Route path={PATH.POST_PAGE} element={<PostPage/>}/>
         <Route path={PATH.ADD_BLOG} element={<BlogEditOrAddPage

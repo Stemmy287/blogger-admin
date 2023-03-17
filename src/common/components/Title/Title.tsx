@@ -5,7 +5,7 @@ import arrow from 'common/icons/arrow.svg'
 type TitlePropsType = {
     title: string
     desc?: string
-    isDesc: boolean
+    isDesc?: boolean
 }
 
 export const Title: FC<TitlePropsType> = ({

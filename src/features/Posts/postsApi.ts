@@ -21,7 +21,6 @@ export const apiPosts = {
   },
   deletePost(postId: string) {
     return instance.delete(`api/posts/${postId}`, {headers})
-      .then(res => res.data)
   },
 }
 
@@ -37,15 +36,7 @@ export type PostType = {
   extendedLikesInfo: LikeInfoType
 }
 
-export type AddPostType = {
-  id: string
-  title: string
-  shortDescription: string
-  content: string
-  blogId: string
-  blogName: string
-  createdAt: string
-}
+export type AddPostType = Omit<PostType, "extendedLikesInfo">
 
 export type AddOrEditPostType = {
   title: string
