@@ -2,20 +2,28 @@ import React, {useEffect, useState} from 'react';
 import s from 'features/Posts/posts.module.scss'
 import {Title} from "common/components/Title/Title";
 import {Post} from "features/Posts/Post/Post";
-import {deletePostTC, fetchPostsTC} from "features/Posts/postsReducer";
+import {deletePostTC, fetchPostsTC, setIsPaginationPostsAC, setPageNumberPostsAC} from "features/Posts/postsReducer";
 import {Button} from "common/components/Button/Button";
 import {Notification} from "common/components/Notification/Notification";
 import {PopUp} from "common/components/PopUp/PopUp";
 import {PostEditOrAddPage} from "features/Posts/PostEditOrAddPage/PostEditOrAddPage";
 import {useAppDispatch} from "hooks/useAppDispatch";
 import {useAppSelector} from "hooks/useAppSelector";
-import {postsSelector} from "features/Posts/postsSelectors";
+import {postsPageNumberSelector, postsSelector, postsTotalCountSelector} from "features/Posts/postsSelectors";
 import {blogsSelector} from "features/Blogs/blogsSelectors";
+import {Pagination} from "common/components/Pagination/Pagination";
+import {setPageNumberBlogsAC} from "features/Blogs/blogsReducer";
 
 export const Posts = () => {
 
   const posts = useAppSelector(postsSelector)
+
+  const pageNumber = useAppSelector(postsPageNumberSelector)
+
+  const postsTotalCount = useAppSelector(postsTotalCountSelector)
+
   const blogs = useAppSelector(blogsSelector)
+
   const dispatch = useAppDispatch()
 
   const [isDeletePopUpActive, setIsDeletePopUpActive] = useState(false)
@@ -32,8 +40,14 @@ export const Posts = () => {
   }
 
   useEffect(() => {
+    dispatch(setPageNumberBlogsAC({pageNumber: 1}))
     dispatch(fetchPostsTC())
-  }, [])
+  }, [pageNumber])
+
+  const onPagination = () => {
+    dispatch(setIsPaginationPostsAC({isPagination: true}))
+    dispatch(setPageNumberPostsAC({pageNumber: pageNumber + 1}))
+  }
 
   return (
     <div>
@@ -54,6 +68,7 @@ export const Posts = () => {
             setPostId={setPostId}
           />)}
       </div>
+      {postsTotalCount > posts.length && <Pagination callback={onPagination}/>}
       <PopUp isActive={isDeletePopUpActive} setIsActive={setIsDeletePopUpActive}>
         <Notification title={'Delete a Post'} message={'Are you sure you want to delete this Post?'}
                       callback={deletePostHandler}

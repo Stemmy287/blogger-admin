@@ -2,8 +2,8 @@ import {AxiosResponse} from "axios";
 import {headers, instance} from "common/constants/instanceApi";
 
 export const apiBlogs = {
-  getBlogs() {
-    return instance.get<ResponseType<Array<BlogType>>>(`api/blogs?pageSize=15`)
+  getBlogs(data: QueryParamsType) {
+    return instance.get<ResponseType<Array<BlogType>>>(`api/blogs`, {params: data})
       .then(res => res.data)
   },
   getBlog(blogId: string) {
@@ -45,4 +45,9 @@ export type ResponseType<T> = {
   pageSize: number
   totalCount: number
   items: T
+}
+
+export type QueryParamsType = {
+  pageNumber: number
+  pageSize: number
 }

@@ -6,54 +6,71 @@ import s from 'features/Blogs/blogs.module.scss'
 import {useNavigate} from "react-router-dom";
 import {PopUp} from "common/components/PopUp/PopUp";
 import {Notification} from "common/components/Notification/Notification";
-import {deleteBlogTC, fetchBlogsTC} from "features/Blogs/blogsReducer";
+import {deleteBlogTC, fetchBlogsTC, setIsPaginationBlogsAC, setPageNumberBlogsAC} from "features/Blogs/blogsReducer";
 import {PATH} from "common/constants/path";
 import {useAppDispatch} from "hooks/useAppDispatch";
 import {useAppSelector} from "hooks/useAppSelector";
-import {blogsSelector} from "features/Blogs/blogsSelectors";
+import {blogsPageNumberSelector, blogsSelector, blogsTotalCountSelector} from "features/Blogs/blogsSelectors";
+import {Pagination} from "common/components/Pagination/Pagination";
+import {setPageNumberPostsAC} from "features/Posts/postsReducer";
 
 export const Blogs = () => {
 
-    const blogs = useAppSelector(blogsSelector)
-    const navigate = useNavigate()
-    const dispatch = useAppDispatch()
-    const navigateHandler = () => {
-        navigate(PATH.ADD_BLOG)
-    }
-    const [isDeletePopUpActive, setIsDeletePopUpActive] = useState(false)
-    const [blogId, setBlogId] = useState('')
+  const blogs = useAppSelector(blogsSelector)
 
-    const deleteBlogHandler = () => {
-        dispatch(deleteBlogTC({blogId}))
-    }
+  const pageNumber = useAppSelector(blogsPageNumberSelector)
+
+  const blogsTotalCount = useAppSelector(blogsTotalCountSelector)
+
+  const navigate = useNavigate()
+
+  const dispatch = useAppDispatch()
+
+  const navigateHandler = () => {
+    navigate(PATH.ADD_BLOG)
+  }
+
+  const [isDeletePopUpActive, setIsDeletePopUpActive] = useState(false)
+  const [blogId, setBlogId] = useState('')
+
+  const deleteBlogHandler = () => {
+    dispatch(deleteBlogTC({blogId}))
+  }
 
   useEffect(() => {
+    dispatch(setPageNumberPostsAC({pageNumber: 1}))
     dispatch(fetchBlogsTC())
-  }, [])
+  }, [pageNumber])
 
-    return (
-        <div>
-            <Title title="Blogs" isDesc={false}/>
-            <div className={s.button}>
-                <Button title={'Add Blog'} callback={navigateHandler}/>
-            </div>
-            {blogs.map(bg => <Blog
-                    key={bg.id}
-                    blogId={bg.id}
-                    title={bg.name}
-                    webSiteUrl={bg.websiteUrl}
-                    description={bg.description}
-                    popUpInfo={setIsDeletePopUpActive}
-                    setBlogId={setBlogId}
-                />
-            )}
-            <PopUp isActive={isDeletePopUpActive} setIsActive={setIsDeletePopUpActive}>
-                <Notification title={'Delete a Blog'} message={'Are you sure you want to delete this Blog?'}
-                              callback={deleteBlogHandler}
-                              onClose={setIsDeletePopUpActive}
-                />
-            </PopUp>
-        </div>
-    );
+  const onPagination = () => {
+    dispatch(setIsPaginationBlogsAC({isPagination: true}))
+    dispatch(setPageNumberBlogsAC({pageNumber: pageNumber + 1}))
+  }
+
+  return (
+    <div>
+      <Title title="Blogs" isDesc={false}/>
+      <div className={s.button}>
+        <Button title={'Add Blog'} callback={navigateHandler}/>
+      </div>
+      {blogs.map(bg => <Blog
+          key={bg.id}
+          blogId={bg.id}
+          title={bg.name}
+          webSiteUrl={bg.websiteUrl}
+          description={bg.description}
+          popUpInfo={setIsDeletePopUpActive}
+          setBlogId={setBlogId}
+        />
+      )}
+      {blogsTotalCount > blogs.length  && <Pagination callback={onPagination}/>}
+      <PopUp isActive={isDeletePopUpActive} setIsActive={setIsDeletePopUpActive}>
+        <Notification title={'Delete a Blog'} message={'Are you sure you want to delete this Blog?'}
+                      callback={deleteBlogHandler}
+                      onClose={setIsDeletePopUpActive}
+        />
+      </PopUp>
+    </div>
+  );
 };
 

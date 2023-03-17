@@ -1,10 +1,10 @@
 import {AxiosResponse} from "axios";
-import {ResponseType} from "features/Blogs/blogsApi";
+import {QueryParamsType, ResponseType} from "features/Blogs/blogsApi";
 import {headers, instance} from "common/constants/instanceApi";
 
 export const apiPosts = {
-  getPosts() {
-    return instance.get<ResponseType<Array<PostType>>>(`api/posts?pageSize=15`)
+  getPosts(data: QueryParamsType) {
+    return instance.get<ResponseType<Array<PostType>>>(`api/posts`, {params: data})
       .then(res => res.data)
   },
   getPost(postId: string) {
