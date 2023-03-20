@@ -17,7 +17,7 @@ export const TableBody:FC<Props> = ({users, setUserId, setIsPopUpActive}) => {
   }
 
   return (
-    <>
+    <tbody>
       {users.map(us =>
         <tr key={us.id} className={s.cells}>
           <td>{us.login}</td>
@@ -27,7 +27,7 @@ export const TableBody:FC<Props> = ({users, setUserId, setIsPopUpActive}) => {
           <td className={s.textEnd}><Trash className={s.delete} onClick={() => {onDeleteClickHandler(us.id)}}/></td>
         </tr>
       )}
-    </>
+    </tbody>
   );
 };
 

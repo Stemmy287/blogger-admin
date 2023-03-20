@@ -1,0 +1,17 @@
+.addUserContainer {
+  width: 419px;
+
+  .addUserContent {
+    display: flex;
+    flex-direction: column;
+    row-gap: 30px;
+    padding: 25px;
+
+    .button {
+      display: flex;
+      justify-content: flex-end;
+      width: 100%;
+      margin-bottom: 17px;
+    }
+  }
+}

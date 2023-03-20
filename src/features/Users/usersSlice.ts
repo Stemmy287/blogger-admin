@@ -10,9 +10,9 @@ export const fetchUsersTC = createAsyncThunk('Users/fetchUsers', async (param, {
     return rejectWithValue(null)
   }
 })
-export const addUserTC = createAsyncThunk('Users/addUser', async (param: { data: AddUserType}, {dispatch, rejectWithValue}) => {
+export const addUserTC = createAsyncThunk('Users/addUser', async (param: {user: AddUserType}, {dispatch, rejectWithValue}) => {
   try {
-    const res = await apiUsers.addUser(param.data)
+    const res = await apiUsers.addUser(param.user)
     dispatch(addUserAC({user: res}))
   } catch (e) {
     return rejectWithValue(null)

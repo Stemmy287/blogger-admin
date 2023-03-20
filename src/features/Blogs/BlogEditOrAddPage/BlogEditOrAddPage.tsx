@@ -42,6 +42,7 @@ export const BlogEditOrAddPage: FC<BlogEditOrAddPagePropsType> = ({
             } else {
                 dispatch(addBlogTC({data: values}))
             }
+            formik.resetForm()
             navigate(link)
         }
     })

@@ -10,6 +10,7 @@ import {useAppDispatch} from "hooks/useAppDispatch";
 import {deleteUserTC, fetchUsersTC} from "features/Users/usersSlice";
 import {Notification} from "common/components/Notification/Notification";
 import {PopUp} from "common/components/PopUp/PopUp";
+import {AddUser} from "features/Users/AddUser/AddUser";
 
 export const Users = () => {
 
@@ -17,6 +18,7 @@ export const Users = () => {
 
   const dispatch = useAppDispatch()
 
+  const [isAddUserPopUpActive, setIsAddUserPopUpActive] = useState(false)
   const [isDeletePopUpActive, setIsDeletePopUpActive] = useState(false)
   const [userId, setUserId] = useState('')
 
@@ -32,12 +34,15 @@ export const Users = () => {
     <>
       <Title title={'Users'}/>
       <div className={s.button}>
-        <Button title={'Add User'} callback={() => {}}/>
+        <Button title={'Add User'} callback={() => setIsAddUserPopUpActive(true)}/>
       </div>
       <table className={s.table}>
         <TableHead rows={['Username', 'Email', 'User ID', 'Date added', '']}/>
         <TableBody users={users} setUserId={setUserId} setIsPopUpActive={setIsDeletePopUpActive}/>
       </table>
+      <PopUp isActive={isAddUserPopUpActive} setIsActive={setIsAddUserPopUpActive}>
+          <AddUser onClose={setIsAddUserPopUpActive}/>
+      </PopUp>
       <PopUp isActive={isDeletePopUpActive} setIsActive={setIsDeletePopUpActive}>
         <Notification title={'Delete a User'} message={'Are you sure you want to delete this user?'}
                       callback={deleteUserHandler}

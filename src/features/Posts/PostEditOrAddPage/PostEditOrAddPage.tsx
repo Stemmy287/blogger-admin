@@ -43,7 +43,7 @@ export const PostEditOrAddPage: FC<PostEditOrAddPageType> = ({
       } else {
         dispatch(editPostTC({postId: postId || '', data: {...values, shortDescription: 'some', blogId: post?.blogId || ''}}))
       }
-
+      formik.resetForm()
       onClose(false)
     }
   })
