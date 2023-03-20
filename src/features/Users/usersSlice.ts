@@ -1,10 +1,15 @@
 import {createAsyncThunk, createSlice, PayloadAction} from "@reduxjs/toolkit";
 import {ResponseType} from "features/Blogs/blogsApi";
 import {AddUserType, apiUsers, UserType} from "features/Users/usersApi";
+import {AppRootStateType} from "app/store";
 
-export const fetchUsersTC = createAsyncThunk('Users/fetchUsers', async (param, {dispatch, rejectWithValue}) => {
+export const fetchUsersTC = createAsyncThunk('Users/fetchUsers', async (param, {dispatch, rejectWithValue, getState}) => {
+
+  const state = getState() as AppRootStateType
+  const queryParams = state.usersReducer.queryParams
+
   try {
-    const res = await apiUsers.getUsers()
+    const res = await apiUsers.getUsers(queryParams)
     dispatch(setUsersAC({users: res}))
   } catch (e) {
     return rejectWithValue(null)
@@ -33,7 +38,11 @@ const slice = createSlice({
   initialState: {
     users: {
       items: [] as UserType[]
-    } as ResponseType<UserType[]>
+    } as ResponseType<UserType[]>,
+    queryParams: {
+      pageNumber: 1,
+      pageSize: 10
+    }
   },
   reducers: {
     setUsersAC(state, action: PayloadAction<{ users: ResponseType<UserType[]> }>) {

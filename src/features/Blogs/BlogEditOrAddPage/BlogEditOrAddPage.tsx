@@ -26,8 +26,11 @@ export const BlogEditOrAddPage: FC<BlogEditOrAddPagePropsType> = ({
                                                                       isEdit,
                                                                   }) => {
     const dispatch = useAppDispatch()
+
     const location = useLocation();
+
     const {blogId, blogName, webSiteUrl, description} = location.state || ''
+
     const navigate = useNavigate()
 
     const formik = useFormik({

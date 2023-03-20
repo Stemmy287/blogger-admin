@@ -35,7 +35,7 @@ export const AddUser:FC<Props> = ({onClose}) => {
         <div className={s.addUserContent}>
           <Input title={'Specify: Email of the user'} component={'input'} {...formik.getFieldProps('email')}/>
           <Input title={'Username'} component={'input'} {...formik.getFieldProps('login')}/>
-          <Input title={'Password'} component={'input'} {...formik.getFieldProps('password')}/>
+          <Input title={'Password'} component={'input'} password {...formik.getFieldProps('password')}/>
           <div className={s.button}>
             <Button type={'submit'} title={'Add user'}/>
           </div>

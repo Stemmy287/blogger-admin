@@ -2,6 +2,7 @@ import React, {FC} from 'react';
 import {UserType} from "features/Users/usersApi";
 import s from './tableBody.module.scss'
 import {ReactComponent as Trash} from "common/icons/Trash.svg";
+import {dateConvertor} from "common/utils/dateConvertor";
 
 type Props = {
   users: UserType[]
@@ -23,7 +24,7 @@ export const TableBody:FC<Props> = ({users, setUserId, setIsPopUpActive}) => {
           <td>{us.login}</td>
           <td>{us.email}</td>
           <td>{us.id}</td>
-          <td>{us.createdAt}</td>
+          <td>{dateConvertor(us.createdAt)}</td>
           <td className={s.textEnd}><Trash className={s.delete} onClick={() => {onDeleteClickHandler(us.id)}}/></td>
         </tr>
       )}

@@ -1,10 +1,10 @@
 import {headers, instance} from "common/constants/instanceApi";
-import {ResponseType} from "features/Blogs/blogsApi";
+import {QueryParamsType, ResponseType} from "features/Blogs/blogsApi";
 import {AxiosResponse} from "axios";
 
 export const apiUsers = {
-  getUsers() {
-    return instance.get<ResponseType<UserType[]>>('api/users', {headers})
+  getUsers(data: QueryParamsType) {
+    return instance.get<ResponseType<UserType[]>>('api/users', {headers, params: data})
       .then(res => res.data)
   },
   addUser(data: AddUserType) {
