@@ -10,7 +10,7 @@ export const fetchPostsTC = createAsyncThunk('Posts/fetchPosts', async (param, {
 }) => {
 
   const state = getState() as AppRootStateType
-  const queryParams = state.posts.queryParams
+  const queryParams = state.postsReducer.queryParams
 
   try {
     const res = await apiPosts.getPosts(queryParams)
@@ -122,7 +122,7 @@ const slice = createSlice({
   }
 })
 
-export const postsReducer = slice.reducer
+export const postsSlice = slice.reducer
 export const {
   setPostsAC,
   setPageNumberPostsAC,

@@ -1,0 +1,9 @@
+@import "../../../../common/styles/sass/mixns";
+
+.row {
+  text-align: left;
+  background-color: #DEDBDC;
+  padding: 12px 23px;
+  margin: 0;
+  @include text(600, 14px, 24px);
+}

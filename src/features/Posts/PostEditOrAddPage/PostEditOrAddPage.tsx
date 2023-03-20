@@ -4,7 +4,7 @@ import {TitlePopUp} from "common/components/TitlePopUp/TitlePopUp";
 import {Input} from "common/components/Input/Input";
 import {Button} from "common/components/Button/Button";
 import {useFormik} from "formik";
-import {addPostTC, editPostTC} from "features/Posts/postsReducer";
+import {addPostTC, editPostTC} from "features/Posts/postsSlice";
 import {BlogType} from "features/Blogs/blogsApi";
 import {useAppDispatch} from "hooks/useAppDispatch";
 import {useAppSelector} from "hooks/useAppSelector";

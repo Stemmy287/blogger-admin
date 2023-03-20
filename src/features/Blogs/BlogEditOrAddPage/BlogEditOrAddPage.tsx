@@ -6,7 +6,7 @@ import {Input} from "common/components/Input/Input";
 import {Button} from "common/components/Button/Button";
 import {useLocation, useNavigate} from "react-router-dom";
 import {useFormik} from "formik";
-import {addBlogTC, editBlogTC} from "features/Blogs/blogsReducer";
+import {addBlogTC, editBlogTC} from "features/Blogs/blogsSlice";
 import {useAppDispatch} from "hooks/useAppDispatch";
 import defaultBlogBanner from 'common/image/blog-banner.jpg'
 

@@ -9,7 +9,7 @@ export const fetchBlogsTC = createAsyncThunk('Blogs/fetchBlogs', async (param, {
 }) => {
 
   const state = getState() as AppRootStateType
-  const queryParams = state.blogs.queryParams
+  const queryParams = state.blogsReducer.queryParams
 
   try {
     const res = await apiBlogs.getBlogs(queryParams)
@@ -114,7 +114,7 @@ const slice = createSlice({
   }
 })
 
-export const blogsReducer = slice.reducer
+export const blogsSlice = slice.reducer
 export const {
   setBlogsAC,
   setPageNumberBlogsAC,

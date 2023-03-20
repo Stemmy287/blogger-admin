@@ -1,5 +1,12 @@
+@import "../../common/styles/sass/mixns";
+
 .button {
   display: flex;
   justify-content: flex-end;
   margin-bottom: 25px;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
 }

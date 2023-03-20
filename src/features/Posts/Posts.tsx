@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react';
 import s from 'features/Posts/posts.module.scss'
 import {Title} from "common/components/Title/Title";
 import {Post} from "features/Posts/Post/Post";
-import {deletePostTC, fetchPostsTC, setIsPaginationPostsAC, setPageNumberPostsAC} from "features/Posts/postsReducer";
+import {deletePostTC, fetchPostsTC, setIsPaginationPostsAC, setPageNumberPostsAC} from "features/Posts/postsSlice";
 import {Button} from "common/components/Button/Button";
 import {Notification} from "common/components/Notification/Notification";
 import {PopUp} from "common/components/PopUp/PopUp";
@@ -12,7 +12,7 @@ import {useAppSelector} from "hooks/useAppSelector";
 import {postsPageNumberSelector, postsSelector, postsTotalCountSelector} from "features/Posts/postsSelectors";
 import {blogsSelector} from "features/Blogs/blogsSelectors";
 import {Pagination} from "common/components/Pagination/Pagination";
-import {setPageNumberBlogsAC} from "features/Blogs/blogsReducer";
+import {setPageNumberBlogsAC} from "features/Blogs/blogsSlice";
 
 export const Posts = () => {
 
@@ -70,7 +70,7 @@ export const Posts = () => {
       </div>
       {postsTotalCount > posts.length && <Pagination callback={onPagination}/>}
       <PopUp isActive={isDeletePopUpActive} setIsActive={setIsDeletePopUpActive}>
-        <Notification title={'Delete a Post'} message={'Are you sure you want to delete this Post?'}
+        <Notification title={'Delete a Post'} message={'Are you sure you want to delete this post?'}
                       callback={deletePostHandler}
                       onClose={setIsDeletePopUpActive}
         />

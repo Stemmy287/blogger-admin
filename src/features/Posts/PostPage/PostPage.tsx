@@ -3,7 +3,7 @@ import {Title} from "common/components/Title/Title";
 import {BackLink} from "common/components/BackLink/BackLink";
 import {PostDeployed} from "features/Posts/PostDeployed/postDeployed";
 import {useParams} from "react-router-dom";
-import {fetchPostTC} from "features/Posts/postsReducer";
+import {fetchPostTC} from "features/Posts/postsSlice";
 import {useAppDispatch} from "hooks/useAppDispatch";
 import {useAppSelector} from "hooks/useAppSelector";
 import {postSelector} from "features/Posts/postsSelectors";

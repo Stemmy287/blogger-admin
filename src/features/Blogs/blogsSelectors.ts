@@ -1,11 +1,11 @@
 import {AppRootStateType} from "app/store";
 
-export const blogsSelector = (state: AppRootStateType) => state.blogs.blogs.items
-export const blogSelector = (state: AppRootStateType) => state.blogs.blog
+export const blogsSelector = (state: AppRootStateType) => state.blogsReducer.blogs.items
+export const blogSelector = (state: AppRootStateType) => state.blogsReducer.blog
 
 //meta data
-export const blogsTotalCountSelector = (state: AppRootStateType) => state.blogs.blogs.totalCount
+export const blogsTotalCountSelector = (state: AppRootStateType) => state.blogsReducer.blogs.totalCount
 
 //query params
-export const blogsPageNumberSelector = (state: AppRootStateType) => state.blogs.queryParams.pageNumber
+export const blogsPageNumberSelector = (state: AppRootStateType) => state.blogsReducer.queryParams.pageNumber
 
