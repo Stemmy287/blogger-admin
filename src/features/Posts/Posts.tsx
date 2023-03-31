@@ -11,7 +11,7 @@ import {useAppDispatch} from "hooks/useAppDispatch";
 import {useAppSelector} from "hooks/useAppSelector";
 import {postsPageNumberSelector, postsSelector, postsTotalCountSelector} from "features/Posts/postsSelectors";
 import {blogsSelector} from "features/Blogs/blogsSelectors";
-import {Pagination} from "common/components/Pagination/Pagination";
+import {PaginationMore} from "common/components/PaginationMore/PaginationMore";
 import {setPageNumberBlogsAC} from "features/Blogs/blogsSlice";
 
 export const Posts = () => {
@@ -68,7 +68,7 @@ export const Posts = () => {
             setPostId={setPostId}
           />)}
       </div>
-      {postsTotalCount > posts.length && <Pagination callback={onPagination}/>}
+      {postsTotalCount > posts.length && <PaginationMore callback={onPagination}/>}
       <PopUp isActive={isDeletePopUpActive} setIsActive={setIsDeletePopUpActive}>
         <Notification title={'Delete a Post'} message={'Are you sure you want to delete this post?'}
                       callback={deletePostHandler}

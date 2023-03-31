@@ -56,10 +56,16 @@ const slice = createSlice({
       if (index > -1) {
         state.users.items.splice(index, 1)
       }
+    },
+    setPageNumber(state, action: PayloadAction<{pageNumber: number}>) {
+      state.queryParams.pageNumber = action.payload.pageNumber
+    },
+    setPageSize(state, action: PayloadAction<{pageSize: number}>) {
+      state.queryParams.pageSize = action.payload.pageSize
     }
   }
 })
 
 export const usersSlice = slice.reducer
 
-export const {setUsersAC, addUserAC, deleteUserAC} = slice.actions
+export const {setUsersAC, addUserAC, deleteUserAC, setPageNumber, setPageSize} = slice.actions

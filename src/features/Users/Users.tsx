@@ -5,16 +5,27 @@ import {Button} from "common/components/Button/Button";
 import {TableHead} from "common/components/Table/TableHead/TableHead";
 import {TableBody} from "common/components/Table/TableBody/TableBody";
 import {useAppSelector} from "hooks/useAppSelector";
-import {usersSelector} from "features/Users/usersSelectors";
+import {
+  usersPageSelector,
+  usersPageSizeSelector,
+  usersSelector,
+  usersTotalCountSelector
+} from "features/Users/usersSelectors";
 import {useAppDispatch} from "hooks/useAppDispatch";
-import {deleteUserTC, fetchUsersTC} from "features/Users/usersSlice";
+import {deleteUserTC, fetchUsersTC, setPageNumber} from "features/Users/usersSlice";
 import {Notification} from "common/components/Notification/Notification";
 import {PopUp} from "common/components/PopUp/PopUp";
 import {AddUser} from "features/Users/AddUser/AddUser";
+import {Pagination} from "common/components/Pagintaton/Pagination";
 
 export const Users = () => {
 
   const users = useAppSelector(usersSelector)
+
+  const currentPage = useAppSelector(usersPageSelector)
+  const pageSize = useAppSelector(usersPageSizeSelector)
+
+  const usersTotalCount = useAppSelector(usersTotalCountSelector)
 
   const dispatch = useAppDispatch()
 
@@ -26,9 +37,13 @@ export const Users = () => {
     dispatch(deleteUserTC({userId}))
   }
 
+  const onPageChangeHandler = (currentPage: number) => {
+    dispatch(setPageNumber({pageNumber: currentPage}))
+  }
+
   useEffect(() => {
     dispatch(fetchUsersTC())
-  }, [])
+  }, [currentPage])
 
   return (
     <>
@@ -40,6 +55,13 @@ export const Users = () => {
         <TableHead rows={['Username', 'Email', 'User ID', 'Date added', '']}/>
         <TableBody users={users} setUserId={setUserId} setIsPopUpActive={setIsDeletePopUpActive}/>
       </table>
+      <Pagination
+        currentPage={currentPage}
+        pageSize={pageSize}
+        totalItemsCount={usersTotalCount}
+        siblingCount={1}
+        onPageChange={onPageChangeHandler}
+      />
       <PopUp isActive={isAddUserPopUpActive} setIsActive={setIsAddUserPopUpActive}>
           <AddUser onClose={setIsAddUserPopUpActive}/>
       </PopUp>

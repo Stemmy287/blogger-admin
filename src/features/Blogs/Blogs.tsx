@@ -11,7 +11,7 @@ import {PATH} from "common/constants/path";
 import {useAppDispatch} from "hooks/useAppDispatch";
 import {useAppSelector} from "hooks/useAppSelector";
 import {blogsPageNumberSelector, blogsSelector, blogsTotalCountSelector} from "features/Blogs/blogsSelectors";
-import {Pagination} from "common/components/Pagination/Pagination";
+import {PaginationMore} from "common/components/PaginationMore/PaginationMore";
 import {setPageNumberPostsAC} from "features/Posts/postsSlice";
 
 export const Blogs = () => {
@@ -63,7 +63,7 @@ export const Blogs = () => {
           setBlogId={setBlogId}
         />
       )}
-      {blogsTotalCount > blogs.length  && <Pagination callback={onPagination}/>}
+      {blogsTotalCount > blogs.length  && <PaginationMore callback={onPagination}/>}
       <PopUp isActive={isDeletePopUpActive} setIsActive={setIsDeletePopUpActive}>
         <Notification title={'Delete a Blog'} message={'Are you sure you want to delete this blog?'}
                       callback={deleteBlogHandler}
