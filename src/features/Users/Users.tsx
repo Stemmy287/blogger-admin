@@ -55,13 +55,13 @@ export const Users = () => {
         <TableHead rows={['Username', 'Email', 'User ID', 'Date added', '']}/>
         <TableBody users={users} setUserId={setUserId} setIsPopUpActive={setIsDeletePopUpActive}/>
       </table>
-      <Pagination
+      {!!users.length && <Pagination
         currentPage={currentPage}
         pageSize={pageSize}
         totalItemsCount={usersTotalCount}
         siblingCount={1}
         onPageChange={onPageChangeHandler}
-      />
+      />}
       <PopUp isActive={isAddUserPopUpActive} setIsActive={setIsAddUserPopUpActive}>
           <AddUser onClose={setIsAddUserPopUpActive}/>
       </PopUp>

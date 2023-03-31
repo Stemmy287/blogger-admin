@@ -1,0 +1,43 @@
+@import "../../../common/styles/sass/variables";
+@import "../../../common/styles/sass/mixns";
+
+.pagination_container {
+  display: flex;
+  list-style-type: none;
+  align-items: center;
+  padding: 0;
+  .arrow_left {
+    margin-right: 15px;
+    cursor: pointer;
+  }
+  .pagination_dots {
+    margin: 0 5px;
+    cursor: default;
+  }
+
+  .pagination_number {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 24px;
+    height: 24px;
+    @include text(400, 12px, 16px);
+    border-radius: 2px;
+    color: $secondFontColor;
+    cursor: pointer;
+    margin: 0 5px;
+  }
+  .selected {
+    color: $secondBGColor;
+    background-color: $secondFontColor;
+  }
+
+  .arrow_right {
+    margin-left: 15px;
+    cursor: pointer;
+  }
+
+  .disabled {
+    pointer-events: none;
+  }
+}
