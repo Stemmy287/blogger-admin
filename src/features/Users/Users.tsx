@@ -12,7 +12,7 @@ import {
   usersTotalCountSelector
 } from "features/Users/usersSelectors";
 import {useAppDispatch} from "hooks/useAppDispatch";
-import {deleteUserTC, fetchUsersTC, setPageNumber} from "features/Users/usersSlice";
+import {deleteUserTC, fetchUsersTC, setPageNumber, setPageSize} from "features/Users/usersSlice";
 import {Notification} from "common/components/Notification/Notification";
 import {PopUp} from "common/components/PopUp/PopUp";
 import {AddUser} from "features/Users/AddUser/AddUser";
@@ -41,9 +41,13 @@ export const Users = () => {
     dispatch(setPageNumber({pageNumber: currentPage}))
   }
 
+  const onPageSizeChange = (pageSize: string) => {
+    dispatch(setPageSize({pageSize: +pageSize}))
+  }
+
   useEffect(() => {
     dispatch(fetchUsersTC())
-  }, [currentPage])
+  }, [currentPage, pageSize])
 
   return (
     <>
@@ -61,6 +65,7 @@ export const Users = () => {
         totalItemsCount={usersTotalCount}
         siblingCount={1}
         onPageChange={onPageChangeHandler}
+        onPageSizeChange={onPageSizeChange}
       />}
       <PopUp isActive={isAddUserPopUpActive} setIsActive={setIsAddUserPopUpActive}>
           <AddUser onClose={setIsAddUserPopUpActive}/>
