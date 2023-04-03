@@ -18,7 +18,7 @@
     @include text(400, 16px, 24px);
     color: #1A1718;
 
-    &[data-showPassword="true"] {
+    &[data-showpassword="true"] {
       -webkit-text-security: disc;
     }
 

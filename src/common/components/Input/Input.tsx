@@ -36,7 +36,7 @@ export const Input: FC<InputPropsType> = ({
       {component === 'input'
         ?
         <>
-          <input type={'text'} value={value} data-showPassword={password && showPassword} onChange={onChangeHandler} name={name}/>
+          <input type={'text'} value={value} data-showpassword={password && showPassword} onChange={onChangeHandler} name={name}/>
           {password && <Eye className={s.showPassword} onClick={onShowHandler}/>}
         </>
         :

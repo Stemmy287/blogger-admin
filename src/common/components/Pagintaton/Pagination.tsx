@@ -13,14 +13,14 @@ type PropsType = {
   onPageSizeChange: (pageSize: string) => void
 }
 
-export const Pagination:FC<PropsType> = ({
-                                           currentPage,
-                                           pageSize,
-                                           totalItemsCount,
-                                           siblingCount = 1,
-                                           onPageChange,
-                                           onPageSizeChange
-}) => {
+export const Pagination: FC<PropsType> = ({
+                                            currentPage,
+                                            pageSize,
+                                            totalItemsCount,
+                                            siblingCount = 1,
+                                            onPageChange,
+                                            onPageSizeChange
+                                          }) => {
 
   const paginationRange = usePagination({currentPage, totalItemsCount, pageSize, siblingCount})
 
@@ -42,10 +42,11 @@ export const Pagination:FC<PropsType> = ({
         </li>
         {paginationRange?.map(pageNumber => {
           if (pageNumber === 'DOTS') {
-            return <li className={s.pagination_dots}>...</li>
+            return <li key={pageNumber} className={s.pagination_dots}>...</li>
           }
           return <li
-            className={pageNumber === currentPage ? `${s.pagination_number} ${s.selected}`: s.pagination_number}
+            key={pageNumber}
+            className={pageNumber === currentPage ? `${s.pagination_number} ${s.selected}` : s.pagination_number}
             onClick={() => onPageChange(+pageNumber)}
           >
             {pageNumber}
@@ -59,7 +60,11 @@ export const Pagination:FC<PropsType> = ({
         </li>
       </ul>
       <span className={s.show}>Show</span>
-      <Select onChange={onPageSizeChange} selectValue={pageSize.toString()} options={['5', '10', '15', '20', '25']}/>
+      <Select
+        onChange={onPageSizeChange}
+        selectValue={pageSize.toString()}
+        options={['5', '10', '15', '20', '25']}
+      />
     </div>
   );
 };
