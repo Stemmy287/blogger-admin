@@ -28,9 +28,14 @@ export const AddUser:FC<Props> = ({onClose}) => {
     }
   })
 
+  const onCloseHandler = () => {
+    formik.resetForm()
+    onClose(false)
+  }
+
   return (
     <div className={s.addUserContainer}>
-      <TitlePopUp title={'Add User'} onCloseHandler={() => onClose(false)}/>
+      <TitlePopUp title={'Add User'} onCloseHandler={onCloseHandler}/>
       <form onSubmit={formik.handleSubmit}>
         <div className={s.addUserContent}>
           <Input title={'Specify: Email of the user'} component={'input'} {...formik.getFieldProps('email')}/>
