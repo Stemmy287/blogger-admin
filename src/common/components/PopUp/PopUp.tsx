@@ -1,13 +1,13 @@
 import React, {FC} from 'react';
 import s from 'common/components/PopUp/PopUp.module.scss'
 
-type PopUp = {
+type PropsType = {
     isActive: boolean
     setIsActive: (isActive: boolean) => void
     children: JSX.Element
 }
 
-export const PopUp: FC<PopUp> = ({
+export const PopUp: FC<PropsType> = ({
                                            isActive,
                                            setIsActive,
                                            children
